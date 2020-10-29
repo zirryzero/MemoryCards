@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemoryCard Nivel Facil</title>
+    <script src="https://kit.fontawesome.com/14ac42b08d.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css" />
+</head>
+
+<body onload="onLoad()">
+    <div class="nivel-facil">
+        <div class="titulo">
+            <h2>MemoryCards</h2>
+            <h2>Nivel Facil</h2>
+        </div>
+        <div class="juego-nivel-facil">
+            <div class="iz">
+                <span style="font-size: 48px; color: black;">
+                    <i class="n far fa-user"></i>
+                </span>
+                <div class="info-nick">
+
+                    <div id="caja-nick" class="caja">NickName</div>
+                </div>
+                <div class="caja contador">
+                    <div class="crono_wrapper">
+                        <h2 id='crono'>00:00:00</h2>
+                    </div>
+                </div>
+                <div class="centrar">
+                    <button id="btn-iniciar" class="bubbly-button iniciar"
+                        onclick="iniciarJuego(), empezarDetener(this);"><i class="fas fa-gamepad"></i>
+                        Iniciar</button>
+                    <button class="bubbly-button reset"
+                        onclick="resetearJuego(), empezarDetener(this), empezarDetener(this);"><i
+                            class="fas fa-undo-alt"></i>
+                        Reset</button>
+                </div>
+            </div>
+            <div class="dr">
+                <div id="juego">
+                    <table>
+                        <tr>
+                            <td id="0" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+                            <td id="1" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+                            <td id="2" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+                        </tr>
+                        <tr>
+                            <td id="3" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+                            <td id="4" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+                            <td id="5" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+                        </tr>
+                        <tr>
+                            <td id="6" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+                            <td id="7" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+                            <td id="8" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+                        </tr>
+                        <tr>
+                            <td id="9" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+                            <td id="10" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+                            <td id="11" class="letra" onclick="girarCarta()" data-valor="valor"></td>
+                        </tr>
+                    </table> 
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/iniciar.js"></script>
+</body>
+
+</html>

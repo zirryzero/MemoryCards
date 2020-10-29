@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Card</title>
+    <script src="https://kit.fontawesome.com/14ac42b08d.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css" />
+</head>
+
+<body>
+    <div class="game">
+        <div class="botones">
+            <button class="bubbly-button compartir"><i class="fas fa-share-alt"></i> Compartir</button>
+            <a href="https://github.com/zirryzero" target="_blank"><button class="bubbly-button seguir"><i class="fas fa-heart"></i> Seguir</button></a>
+            <button class="bubbly-button megusta"><i class="far fa-thumbs-up"></i> Me gusta</button>
+        </div>
+        <h3>MemoryCards</h3>
+
+        <form method="get" class="form">
+            <div class="nivel">
+                <label class="container">Nivel Bajo
+                    <input id="r1" type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+                <label  class="container">Nivel Alto
+                    <input id="r2" type="radio" name="radio">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div>
+                <span style="font-size: 48px; color: black;">
+                    <i class="n far fa-user"></i>
+                </span>
+                <input id="nickName" class="nick" type="text" name="nombre" size="40" placeholder="NickName" autocomplete="off">
+            </div>
+        </form>
+        <div class="botones">
+            <button class="bubbly-button jugar" onclick="iniciar()"><i class="fas fa-play-circle"></i> Jugar</button>
+        </div>
+        <footer>
+            <div><p><a href="instrucciones.html">Instrucciones</a> - <a href="https://github.com/zirryzero"  target="_blank">Contacto</a></p> </div>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/iniciar.js"></script>
+</body>
+
+</html>
