@@ -1,0 +1,513 @@
+$fuschia: #ff0081;
+$button-bg: $fuschia;
+$button-text-color: #fff;
+$baby-blue: #f5f3fe;
+
+* {
+    margin: 0;
+    margin-bottom: 0px;
+    padding: 0;
+    scroll-behavior: smooth;
+    list-style-type: none;
+    text-decoration: none;
+    outline: none;
+}
+.game {
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+    padding: 0;
+    width: 75%;
+    background-image: url(img/BRAIN.jpg);
+    height: 100vh;
+}
+
+.instrucciones {
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+    padding: 0;
+    width: 75%;
+    background-image: url(img/BRAIN2.jpeg);
+    height: 100vh;
+}
+.nivel-facil {
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+    padding: 0;
+    width: 75%;
+    background-image: url(img/BRAINBN.jpg);
+    height: 100vh;
+}
+.nivel-dificil{
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+    padding: 0;
+    width: 75%;
+    background-image: url(img/BRAIN3.jpg);
+    height: 100vh;
+}
+body {
+    font-size: 16px;
+    font-family: "Helvetica", "Arial", sans-serif;
+    background-color: $baby-blue;
+}
+
+.bubbly-button {
+    font-family: "Helvetica", "Arial", sans-serif;
+    display: inline-block;
+    font-size: 1em;
+    padding: 1em 2em;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: $button-bg;
+    color: $button-text-color;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:before,
+    &:after {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 140%;
+        height: 100%;
+        left: -20%;
+        z-index: -1000;
+        transition: all ease-in-out 0.5s;
+        background-repeat: no-repeat;
+    }
+
+    &:before {
+        display: none;
+        top: -75%;
+        background-image: radial-gradient(circle, $button-bg 20%, transparent 20%),
+            radial-gradient(circle, transparent 20%, $button-bg 20%, transparent 30%),
+            radial-gradient(circle, $button-bg 20%, transparent 20%),
+            radial-gradient(circle, $button-bg 20%, transparent 20%),
+            radial-gradient(circle, transparent 10%, $button-bg 15%, transparent 20%),
+            radial-gradient(circle, $button-bg 20%, transparent 20%),
+            radial-gradient(circle, $button-bg 20%, transparent 20%),
+            radial-gradient(circle, $button-bg 20%, transparent 20%),
+            radial-gradient(circle, $button-bg 20%, transparent 20%);
+        background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+        //background-position: 0% 80%, -5% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 85% 30%;
+    }
+
+    &:after {
+        display: none;
+        bottom: -75%;
+        background-image: radial-gradient(circle, $button-bg 20%, transparent 20%),
+            radial-gradient(circle, $button-bg 20%, transparent 20%),
+            radial-gradient(circle, transparent 10%, $button-bg 15%, transparent 20%),
+            radial-gradient(circle, $button-bg 20%, transparent 20%),
+            radial-gradient(circle, $button-bg 20%, transparent 20%),
+            radial-gradient(circle, $button-bg 20%, transparent 20%),
+            radial-gradient(circle, $button-bg 20%, transparent 20%);
+        background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+        //background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+    }
+
+    &:active {
+        transform: scale(0.9);
+        background-color: darken($button-bg, 5%);
+        box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+    }
+
+    &.animate {
+        &:before {
+            display: block;
+            animation: topBubbles ease-in-out 0.75s forwards;
+        }
+        &:after {
+            display: block;
+            animation: bottomBubbles ease-in-out 0.75s forwards;
+        }
+    }
+}
+
+.botones {
+    display: flex;
+    justify-content: space-around;
+}
+
+h3 {
+    padding-top: 100px;
+    font-size: 75px;
+    transform: rotate(-10deg);
+    text-align: center;
+    margin-bottom: 60px;
+    -webkit-text-stroke: 0.3px white;
+}
+.instru {
+    font-size: 60px;
+    transform: rotate(0deg);
+}
+.div-instru {
+    padding: 5%;
+    padding-top: 60px;
+    margin-left: 23%;
+    margin-right: 23%;
+    background-color: rgba(255, 255, 255, 0.486);
+    font-size: 35px;
+    border: black 2px solid;
+    height: 50vh;
+    p {
+        margin-bottom: 30px;
+        font-family: "Staatliches", cursive;
+    }
+}
+.n {
+    -webkit-text-stroke: 0.3px white;
+}
+.form {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    margin-right: 25%;
+}
+.nivel {
+    font-family: "Staatliches", cursive;
+    font-size: 20px;
+    margin-right: 5%;
+    -webkit-text-stroke: 0.3px white;
+}
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: $fuschia;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+.nick {
+    font-family: "Staatliches", cursive;
+    font-size: 30px;
+    padding-left: 5px;
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 4%;
+    position: absolute;
+    width: 15%;
+}
+.jugar {
+    border-radius: 50%;
+    font-size: 20px;
+    font-family: "Staatliches", cursive;
+}
+
+footer {
+    font-size: 20px;
+    font-family: "Staatliches", cursive;
+    position: fixed;
+    left: 0;
+    bottom: 5%;
+    width: 100%;
+    color: black;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    p {
+        -webkit-text-stroke: 0.3px white;
+        a {
+            text-decoration: none;
+            color: black;
+            -webkit-text-stroke: 0.2px white;
+        }
+    }
+}
+.buttons-instru {
+    width: 100%;
+    .regresar {
+        position: fixed;
+        right: 0;
+        bottom: 1%;
+        margin-right: 20%;
+    }
+    .iniciar {
+        position: fixed;
+        left: 0;
+        bottom: 1%;
+        margin-left: 20%;
+    }
+}
+.titulo {
+    color: #f6cb35;
+    text-decoration: underline;
+    transform: rotate(-10deg);
+    font-size: 25px;
+    width: 20%;
+    padding-top: 110px;
+    padding-left: 60px;
+    text-align: center;
+    h2 {
+        -webkit-text-stroke: 0.3px black;
+    }
+}
+.titulo-dificil {
+    color: #7a0000;
+    text-decoration: underline;
+    transform: rotate(-10deg);
+    font-size: 25px;
+    width: 20%;
+    padding-top: 110px;
+    padding-left: 60px;
+    text-align: center;
+    h2 {
+        -webkit-text-stroke: 0.3px black;
+    }
+}
+.juego-nivel-facil {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    height: 600px;
+    .iz {
+        margin-left: 60px;
+        margin-right: 30px;
+        margin-top: 50px;
+        .caja{
+            border: 1px black dotted;
+            background: linear-gradient(90deg, rgba(255,255,255,0.5228466386554622) 0%, rgba(57,230,249,0.4948354341736695) 100%);
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+            font-family: "Staatliches", cursive;
+            font-size: 20px;
+        }
+        height: 600px;
+    }
+    .dr {
+        /* margin-left: 10X; */
+        width: 90%;
+        height: 600px;
+        margin-bottom: 0;
+        td{
+            margin: 10px;
+        }
+    }
+}
+
+
+#juego {
+	opacity: 0.3;
+	width: 100%;
+	height: 75vh;
+}
+
+table {
+	width: 100%;
+	height: 100%;
+}
+
+td {
+	width: 20%;
+	height: 25%;
+	background-color: black;
+	border: 3px solid black;
+	border-radius: 5px;
+}
+
+.letra {
+    font-family: 'Pacifico', cursive;
+	color: white;
+	font-size: 40px;
+	text-align: center;
+	font-style: italic;
+}
+
+input {
+	width: 90px;
+	height: 30px;
+}
+
+.centrar {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    height: 410px;
+    button{
+        width: 63%;
+        margin-left: 20%;
+    }
+}
+
+.fin-contend{
+    opacity: none;
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.juego-nivel-dificil {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    height: 600px;
+    .iz {
+        margin-left: 60px;
+        margin-right: 30px;
+        margin-top: 50px;
+        .caja{
+            border: 1px black dotted;
+            background: linear-gradient(90deg, rgba(255,255,255,0.5228466386554622) 0%, rgba(0, 0, 0, 0.671) 100%);
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+            font-family: "Staatliches", cursive;
+            font-size: 20px;
+        }
+        height: 600px;
+    }
+    .dr {
+        /* margin-left: 10X; */
+        width: 90%;
+        height: 600px;
+        margin-bottom: 0;
+            td {
+                width: 20%;
+                height: 25%;
+                background-color: rgb(128, 128, 128);
+                border: 3px solid black;
+                border-radius: 5px;
+                margin: 10px;
+            }
+            .letra {
+                font-family: 'Pacifico', cursive;
+                color: black;
+                -webkit-text-stroke: 1px white;
+                font-size: 40px;
+                text-align: center;
+                font-style: italic;
+            }
+        
+    }
+}
+@keyframes topBubbles {
+    0% {
+        background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+    }
+    50% {
+        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+    }
+    100% {
+        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+
+@keyframes bottomBubbles {
+    0% {
+        background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+    }
+    50% {
+        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+    }
+    100% {
+        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+}
+
+.hide{
+    display: none;
+}
+
+.none{
+    cursor: default;
+    background-color: gray;
+    i{
+        display: none;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    .game {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        width: 100%;
+    }
+    .instrucciones {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        width: 100%;
+    }
+    .nivel-facil {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        width: 100%;
+    }
+  }
