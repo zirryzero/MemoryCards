@@ -23,7 +23,7 @@ function iniciar() {
 function onLoad(){
     let cajanick = document.getElementById('caja-nick');
     cajanick.innerHTML=sessionStorage.getItem('nick');
+    
 }
-
     
 

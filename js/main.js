@@ -95,6 +95,7 @@ function iniciarJuego() {
 };
 
 function resetearJuego() {
+    document.getElementById("juego").className="juego";
     document.getElementById("juego").innerHTML = `
     <table>
         <tr>
@@ -210,7 +211,9 @@ function comprobar() {
                     class="bubbly-button next">Siguiente Nivel <i
                         class="fas fa-arrow-right"></i></button></a>
         </div>`;
+        document.getElementById("juego").className="juego finjuego";
         empezarDetener();
     }
 }
+
 

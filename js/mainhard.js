@@ -100,6 +100,7 @@ function iniciarJuego() {
 };
 
 function resetearJuego() {
+    document.getElementById("juego").className="juego";
     document.getElementById("juego").innerHTML = `
     <table>
     <tr>
@@ -222,6 +223,7 @@ function comprobar() {
             <h3>Felicidades <br> GANASTE</h3>
             <a href="index.html"><button class="bubbly-button next"><i class="fas fa-home"></i> Inicio</button></a>
         </div>`;
+        document.getElementById("juego").className="juego finjuego";
         empezarDetener();
     }
 }
