@@ -19,7 +19,6 @@ $baby-blue: #f5f3fe;
     width: 75%;
     background-image: url(img/BRAIN.jpg);
     height: 100vh;
-    
 }
 
 .instrucciones {
@@ -38,7 +37,7 @@ $baby-blue: #f5f3fe;
     background-image: url(img/BRAINBN.jpg);
     height: 100vh;
 }
-.nivel-dificil{
+.nivel-dificil {
     margin-left: 12.5%;
     margin-right: 12.5%;
     padding: 0;
@@ -141,7 +140,7 @@ body {
 }
 
 h3 {
-    padding-top: 100px;
+    padding-top: 10vh;
     font-size: 75px;
     transform: rotate(-10deg);
     text-align: center;
@@ -288,12 +287,6 @@ footer {
         bottom: 1%;
         margin-right: 20%;
     }
-    .iniciar {
-        position: fixed;
-        left: 0;
-        bottom: 1%;
-        margin-left: 20%;
-    }
 }
 .titulo {
     color: #f6cb35;
@@ -306,6 +299,7 @@ footer {
     text-align: center;
     h2 {
         -webkit-text-stroke: 0.3px black;
+        text-decoration: underline #f6cb35;
     }
 }
 .titulo-dificil {
@@ -319,6 +313,7 @@ footer {
     text-align: center;
     h2 {
         -webkit-text-stroke: 0.3px black;
+        text-decoration: underline #7a0000
     }
 }
 .juego-nivel-facil {
@@ -331,9 +326,13 @@ footer {
         margin-left: 60px;
         margin-right: 30px;
         margin-top: 50px;
-        .caja{
+        .caja {
             border: 1px black dotted;
-            background: linear-gradient(90deg, rgba(255,255,255,0.5228466386554622) 0%, rgba(57,230,249,0.4948354341736695) 100%);
+            background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.5228466386554622) 0%,
+                rgba(57, 230, 249, 0.4948354341736695) 100%
+            );
             height: 30px;
             display: flex;
             align-items: center;
@@ -349,56 +348,64 @@ footer {
         width: 90%;
         height: 600px;
         margin-bottom: 0;
-        td{
+        td {
             margin: 10px;
         }
     }
 }
 
-
-#juego {
-	opacity: 0.3;
-	width: 100%;
-	height: 75vh;
+.juego {
+    opacity: 0.3;
+    width: 100%;
+    height: 75vh;
 }
 
 table {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 td {
-	width: 20%;
-	height: 25%;
-	background-color: black;
-	border: 3px solid black;
-	border-radius: 5px;
+    width: 20%;
+    height: 25%;
+    background-color: black;
+    border: 3px solid black;
+    border-radius: 5px;
 }
 
 .letra {
-    font-family: 'Pacifico', cursive;
-	color: white;
-	font-size: 40px;
-	text-align: center;
-	font-style: italic;
+    font-family: "Pacifico", cursive;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    font-style: italic;
 }
 
 input {
-	width: 90px;
-	height: 30px;
+    width: 90px;
+    height: 30px;
 }
 
 .centrar {
     display: grid;
     grid-template-rows: 50% 50%;
     height: 410px;
-    button{
+    button {
+        width: 63%;
+        margin-left: 20%;
+    }
+}
+.centro {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    height: 410px;
+    button {
         width: 63%;
         margin-left: 20%;
     }
 }
 
-.fin-contend{
+.fin-contend {
     opacity: none;
     margin-top: 10vh;
     display: flex;
@@ -416,9 +423,9 @@ input {
         margin-left: 60px;
         margin-right: 30px;
         margin-top: 50px;
-        .caja{
+        .caja {
             border: 1px black dotted;
-            background: linear-gradient(90deg, rgba(255,255,255,0.5228466386554622) 0%, rgba(0, 0, 0, 0.671) 100%);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.5228466386554622) 0%, rgba(0, 0, 0, 0.671) 100%);
             height: 30px;
             display: flex;
             align-items: center;
@@ -434,25 +441,30 @@ input {
         width: 90%;
         height: 600px;
         margin-bottom: 0;
-            td {
-                width: 20%;
-                height: 25%;
-                background-color: rgb(128, 128, 128);
-                border: 3px solid black;
-                border-radius: 5px;
-                margin: 10px;
-            }
-            .letra {
-                font-family: 'Pacifico', cursive;
-                color: black;
-                -webkit-text-stroke: 1px white;
-                font-size: 40px;
-                text-align: center;
-                font-style: italic;
-            }
-        
+        td {
+            width: 20%;
+            height: 25%;
+            background-color: rgb(128, 128, 128);
+            border: 3px solid black;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        .letra {
+            font-family: "Pacifico", cursive;
+            color: black;
+            -webkit-text-stroke: 1px white;
+            text-align: center;
+            font-style: italic;
+        }
     }
 }
+.crono{
+    position: relative;
+}
+.finjuego{
+    height: 200px;
+}
+
 @keyframes topBubbles {
     0% {
         background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
@@ -479,20 +491,22 @@ input {
     }
 }
 
-.hide{
+.hide {
     display: none;
 }
 
-.none{
+.none {
     cursor: default;
     background-color: gray;
-    i{
+    i {
         display: none;
     }
 }
 
-
 @media (max-width: 1024px) {
+    h3 {
+        padding: 0;
+    }
     .game {
         margin-left: 0;
         margin-right: 0;
@@ -511,4 +525,99 @@ input {
         padding: 0;
         width: 100%;
     }
-  }
+    .nivel-dificil {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        width: 75%;
+        background-image: url(img/BRAIN3.jpg);
+        height: 100vh;
+    }
+}
+@media screen and (max-width: 1440px) {
+    .game {
+        -webkit-transform: scale(0.8);
+        -webkit-transform-origin: 50% 0%;
+        transform: scale(0.8);
+        transform-origin: 50% 0%;
+        height: 125vh;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+    body {
+        height: 50vh;
+    }
+    .juego-nivel-facil {
+        height: 75vh;
+        .iz {
+            margin-left: 60px;
+            margin-right: 30px;
+            margin-top: 50px;
+            height: 60vh;
+        }
+        .dr {
+            width: 90%;
+            height: 60vh;
+            margin-bottom: 0;
+            td {
+                margin: 10px;
+            }
+        }
+    }
+    .juego-nivel-dificil {
+        height: 75vh;
+        .iz {
+            margin-left: 60px;
+            margin-right: 30px;
+            margin-top: 50px;
+            height: 60vh;
+        }
+        .dr {
+            width: 90%;
+            height: 60vh;
+            margin-bottom: 0;
+            td {
+                margin: 10px;
+                font-size: 190%;
+                
+            }
+        }
+    }
+    h2 {
+        position: absolute;
+        font-size: 25px;
+        z-index: 1;
+    }
+    .btns {
+        margin-top: 5vh;
+        height: 45px;
+    }
+    .centro {
+        display: block;
+        button {
+            margin-top: 10px;
+        }
+        height: 35vh;
+    }
+    .div-instru{
+        p{
+            font-size: 3.5vh;
+        }
+    }
+    .instru{
+        font-size: 3em;
+    }
+    .buttons-instru{
+        .regresar{
+            margin-right: 15%;
+        }
+        
+    }
+    .next{
+        margin-top: 5vh;
+        margin-bottom: 0;
+    }
+    
+
+}
