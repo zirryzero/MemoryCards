@@ -1,716 +1,881 @@
+/* ==========================================================================
+   MemoryCards - Estilos Principales y Responsive
+   ========================================================================== */
+
+:root {
+    --primary: #ff0081;
+    --primary-dark: #d8006d;
+    --primary-glow: rgba(255, 0, 129, 0.4);
+    --secondary: #39e6f9;
+    --dark-bg: #1e272e;
+    --card-back: #2c3e50;
+    --card-hover: #34495e;
+    --text-light: #ffffff;
+    --text-dark: #222222;
+    --success: #2ed573;
+    --error: #ff4757;
+    --font-heading: 'Staatliches', cursive, sans-serif;
+    --font-cards: 'Pacifico', cursive, sans-serif;
+    --font-body: 'Helvetica Neue', Arial, sans-serif;
+}
+
 * {
-  margin: 0;
-  margin-bottom: 0px;
-  padding: 0;
-  scroll-behavior: smooth;
-  list-style-type: none;
-  text-decoration: none;
-  outline: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.game {
-  margin-left: 12.5%;
-  margin-right: 12.5%;
-  padding: 0;
-  width: 75%;
-  background-image: url(img/BRAIN.jpg);
-  height: 100vh;
+html, body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    background-color: #0f141d;
+    overflow-x: hidden;
 }
 
-.instrucciones {
-  margin-left: 12.5%;
-  margin-right: 12.5%;
-  padding: 0;
-  width: 75%;
-  background-image: url(img/BRAIN2.jpeg);
-  height: 100vh;
-}
-
-.nivel-facil {
-  margin-left: 12.5%;
-  margin-right: 12.5%;
-  padding: 0;
-  width: 75%;
-  background-image: url(img/BRAINBN.jpg);
-  height: 100vh;
-}
-
-.nivel-dificil {
-  margin-left: 12.5%;
-  margin-right: 12.5%;
-  padding: 0;
-  width: 75%;
-  background-image: url(img/BRAIN3.jpg);
-  height: 100vh;
-}
-
-body {
-  font-size: 16px;
-  font-family: "Helvetica", "Arial", sans-serif;
-  background-color: #f5f3fe;
-}
+/* ==========================================================================
+   Botones Burbuja (Bubbly Button)
+   ========================================================================== */
 
 .bubbly-button {
-  font-family: "Helvetica", "Arial", sans-serif;
-  display: inline-block;
-  font-size: 1em;
-  padding: 1em 2em;
-  margin-top: 100px;
-  margin-bottom: 60px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-       appearance: none;
-  background-color: #ff0081;
-  color: #fff;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  -webkit-transition: -webkit-transform ease-in 0.1s, -webkit-box-shadow ease-in 0.25s;
-  transition: -webkit-transform ease-in 0.1s, -webkit-box-shadow ease-in 0.25s;
-  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
-  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s, -webkit-transform ease-in 0.1s, -webkit-box-shadow ease-in 0.25s;
-  -webkit-box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
-          box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    padding: 0.8rem 1.6rem;
+    appearance: none;
+    background-color: var(--primary);
+    color: var(--text-light);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 4px 15px var(--primary-glow);
+    text-decoration: none;
+    user-select: none;
 }
 
-.bubbly-button:focus {
-  outline: 0;
-}
-
-.bubbly-button:before, .bubbly-button:after {
-  position: absolute;
-  content: "";
-  display: block;
-  width: 140%;
-  height: 100%;
-  left: -20%;
-  z-index: -1000;
-  -webkit-transition: all ease-in-out 0.5s;
-  transition: all ease-in-out 0.5s;
-  background-repeat: no-repeat;
-}
-
-.bubbly-button:before {
-  display: none;
-  top: -75%;
-  background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 20%, #ff0081 20%, transparent 30%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
-  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
-}
-
-.bubbly-button:after {
-  display: none;
-  bottom: -75%;
-  background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
-  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+.bubbly-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 0, 129, 0.6);
 }
 
 .bubbly-button:active {
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
-  background-color: #e60074;
-  -webkit-box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
-          box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+    transform: translateY(1px) scale(0.97);
+    background-color: var(--primary-dark);
 }
 
-.bubbly-button.animate:before {
-  display: block;
-  -webkit-animation: topBubbles ease-in-out 0.75s forwards;
-          animation: topBubbles ease-in-out 0.75s forwards;
+.bubbly-button.disabled,
+.bubbly-button:disabled {
+    background-color: #636e72;
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
 }
 
-.bubbly-button.animate:after {
-  display: block;
-  -webkit-animation: bottomBubbles ease-in-out 0.75s forwards;
-          animation: bottomBubbles ease-in-out 0.75s forwards;
+/* ==========================================================================
+   Pantallas Principales y Fondos
+   ========================================================================== */
+
+.game,
+.instrucciones,
+.pantalla-juego {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
-.botones {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+/* Fondos específicos */
+.game {
+    background-image: linear-gradient(rgba(10, 15, 25, 0.65), rgba(10, 15, 25, 0.75)), url(img/BRAIN.jpg);
 }
 
-h3 {
-  padding-top: 10vh;
-  font-size: 75px;
-  -webkit-transform: rotate(-10deg);
-          transform: rotate(-10deg);
-  text-align: center;
-  margin-bottom: 60px;
-  -webkit-text-stroke: 0.3px white;
+.instrucciones {
+    background-image: linear-gradient(rgba(10, 15, 25, 0.75), rgba(10, 15, 25, 0.85)), url(img/BRAIN2.jpeg);
 }
 
-.instru {
-  font-size: 60px;
-  -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
+.nivel-facil {
+    background-image: linear-gradient(rgba(10, 15, 25, 0.8), rgba(10, 15, 25, 0.85)), url(img/BRAINBN.jpg);
 }
 
-.div-instru {
-  padding: 5%;
-  padding-top: 60px;
-  margin-left: 23%;
-  margin-right: 23%;
-  background-color: rgba(255, 255, 255, 0.486);
-  font-size: 35px;
-  border: black 2px solid;
-  height: 50vh;
+.nivel-dificil {
+    background-image: linear-gradient(rgba(20, 10, 15, 0.8), rgba(15, 10, 20, 0.85)), url(img/BRAIN3.jpg);
 }
 
-.div-instru p {
-  margin-bottom: 30px;
-  font-family: "Staatliches", cursive;
+/* ==========================================================================
+   Menú Principal (index.html)
+   ========================================================================== */
+
+.botones-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px 15px 10px;
+    z-index: 10;
 }
 
-.n {
-  -webkit-text-stroke: 0.3px white;
+.botones-top .bubbly-button {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+}
+
+.menu-principal {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.logo-titulo {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(255, 0, 129, 0.8), 2px 2px 0px #000;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    transform: rotate(-3deg);
+    animation: flotar 4s ease-in-out infinite alternate;
+}
+
+@keyframes flotar {
+    from { transform: translateY(0px) rotate(-3deg); }
+    to { transform: translateY(-8px) rotate(-1deg); }
 }
 
 .form {
-  padding-top: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-right: 25%;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    padding: 30px 25px;
+    width: 100%;
+    max-width: 460px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .nivel {
-  font-family: "Staatliches", cursive;
-  font-size: 20px;
-  margin-right: 5%;
-  -webkit-text-stroke: 0.3px white;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: #ffffff;
 }
 
 .container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding-left: 32px;
+    cursor: pointer;
+    user-select: none;
 }
 
-/* Hide the browser's default radio button */
 .container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
 }
 
-/* Create a custom radio button */
 .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-  border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 22px;
+    width: 22px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    border: 2px solid #ffffff;
 }
 
-/* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  background-color: #ccc;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
-/* When the radio button is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: #ff0081;
+    background-color: var(--primary);
+    border-color: #ffffff;
 }
 
-/* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
+    content: "";
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
 }
 
-/* Show the indicator (dot/circle) when checked */
 .container input:checked ~ .checkmark:after {
-  display: block;
+    display: block;
 }
 
-/* Style the indicator (dot/circle) */
-.container .checkmark:after {
-  top: 9px;
-  left: 9px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: white;
+.input-nick-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    padding: 6px 14px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-nick-wrapper .n {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-right: 10px;
 }
 
 .nick {
-  font-family: "Staatliches", cursive;
-  font-size: 30px;
-  padding-left: 5px;
-  margin-top: 5px;
-  margin-left: 10px;
-  height: 4%;
-  position: absolute;
-  width: 15%;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    color: #222;
 }
 
-.jugar {
-  border-radius: 50%;
-  font-size: 20px;
-  font-family: "Staatliches", cursive;
+.botones-jugar .jugar {
+    width: 100%;
+    font-size: 1.4rem;
+    padding: 0.9rem;
 }
 
 footer {
-  font-size: 20px;
-  font-family: "Staatliches", cursive;
-  position: fixed;
-  left: 0;
-  bottom: 5%;
-  width: 100%;
-  color: black;
-  text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+    padding: 20px;
+    text-align: center;
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    z-index: 10;
 }
 
-footer p {
-  -webkit-text-stroke: 0.3px white;
+footer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 8px;
+    transition: color 0.2s ease;
 }
 
-footer p a {
-  text-decoration: none;
-  color: black;
-  -webkit-text-stroke: 0.2px white;
+footer a:hover {
+    color: var(--secondary);
+}
+
+/* ==========================================================================
+   Pantalla de Instrucciones (instrucciones.html)
+   ========================================================================== */
+
+.div-instru {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 650px;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.div-instru p {
+    margin-bottom: 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.div-instru p i {
+    color: var(--primary);
+    font-size: 1.3rem;
+    margin-top: 4px;
+}
+
+.suerte-text {
+    font-family: var(--font-heading);
+    text-align: center;
+    font-size: 1.5rem;
+    color: #f6e58d !important;
+    margin-top: 25px;
+    justify-content: center !important;
 }
 
 .buttons-instru {
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 30px 20px;
 }
 
-.buttons-instru .regresar {
-  position: fixed;
-  right: 0;
-  bottom: 1%;
-  margin-right: 20%;
+/* ==========================================================================
+   Juego (nivelfacil.html & niveldificil.html)
+   ========================================================================== */
+
+.barra-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10;
 }
 
-.titulo {
-  color: #f6cb35;
-  text-decoration: underline;
-  -webkit-transform: rotate(-10deg);
-          transform: rotate(-10deg);
-  font-size: 25px;
-  width: 20%;
-  padding-top: 110px;
-  padding-left: 60px;
-  text-align: center;
+.titulo-nivel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.titulo h2 {
-  -webkit-text-stroke: 0.3px black;
-  -webkit-text-decoration: underline #f6cb35;
-          text-decoration: underline #f6cb35;
+.titulo-nivel h2 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: #ffffff;
+    letter-spacing: 1px;
 }
 
-.titulo-dificil {
-  color: #7a0000;
-  text-decoration: underline;
-  -webkit-transform: rotate(-10deg);
-          transform: rotate(-10deg);
-  font-size: 25px;
-  width: 20%;
-  padding-top: 110px;
-  padding-left: 60px;
-  text-align: center;
+.badge-dificultad {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.titulo-dificil h2 {
-  -webkit-text-stroke: 0.3px black;
-  -webkit-text-decoration: underline #7a0000;
-          text-decoration: underline #7a0000;
+.badge-dificultad.facil {
+    background-color: #2ed573;
+    color: #111;
 }
 
-.juego-nivel-facil {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 30% 70%;
-      grid-template-columns: 30% 70%;
-  padding-bottom: 0;
-  margin-bottom: 0;
-  height: 600px;
+.badge-dificultad.dificil {
+    background-color: #ff4757;
+    color: #fff;
 }
 
-.juego-nivel-facil .iz {
-  margin-left: 60px;
-  margin-right: 30px;
-  margin-top: 50px;
-  height: 600px;
+.btn-volver-inicio {
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.15);
+    transition: background 0.2s ease;
 }
 
-.juego-nivel-facil .iz .caja {
-  border: 1px black dotted;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.522847)), to(rgba(57, 230, 249, 0.494835)));
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.522847) 0%, rgba(57, 230, 249, 0.494835) 100%);
-  height: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 50px;
-  font-family: "Staatliches", cursive;
-  font-size: 20px;
+.btn-volver-inicio:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
 
-.juego-nivel-facil .dr {
-  /* margin-left: 10X; */
-  width: 90%;
-  height: 600px;
-  margin-bottom: 0;
+.contenedor-juego {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    padding: 24px;
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
 }
 
-.juego-nivel-facil .dr td {
-  margin: 10px;
+/* Panel Lateral de Stats */
+.panel-lateral {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: fit-content;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
-.juego {
-  opacity: 0.3;
-  width: 100%;
-  height: 75vh;
+.caja-perfil {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-table {
-  width: 100%;
-  height: 100%;
+.icono-usuario {
+    font-size: 1.8rem;
+    color: var(--secondary);
 }
 
-td {
-  width: 20%;
-  height: 25%;
-  background-color: black;
-  border: 3px solid black;
-  border-radius: 5px;
+.caja-nick {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: #ffffff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.letra {
-  font-family: "Pacifico", cursive;
-  color: white;
-  font-size: 40px;
-  text-align: center;
-  font-style: italic;
+.stats-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-input {
-  width: 90px;
-  height: 30px;
+.caja-stat {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.centrar {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: 50% 50%;
-      grid-template-rows: 50% 50%;
-  height: 410px;
+.label-stat {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.centrar button {
-  width: 63%;
-  margin-left: 20%;
-}
-
-.centro {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-rows: 50% 50%;
-      grid-template-rows: 50% 50%;
-  height: 410px;
-}
-
-.centro button {
-  width: 63%;
-  margin-left: 20%;
-}
-
-.fin-contend {
-  opacity: none;
-  margin-top: 10vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.juego-nivel-dificil {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 30% 70%;
-      grid-template-columns: 30% 70%;
-  padding-bottom: 0;
-  margin-bottom: 0;
-  height: 600px;
-}
-
-.juego-nivel-dificil .iz {
-  margin-left: 60px;
-  margin-right: 30px;
-  margin-top: 50px;
-  height: 600px;
-}
-
-.juego-nivel-dificil .iz .caja {
-  border: 1px black dotted;
-  background: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.522847)), to(rgba(0, 0, 0, 0.671)));
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.522847) 0%, rgba(0, 0, 0, 0.671) 100%);
-  height: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: 50px;
-  font-family: "Staatliches", cursive;
-  font-size: 20px;
-}
-
-.juego-nivel-dificil .dr {
-  /* margin-left: 10X; */
-  width: 90%;
-  height: 600px;
-  margin-bottom: 0;
-}
-
-.juego-nivel-dificil .dr td {
-  width: 20%;
-  height: 25%;
-  background-color: gray;
-  border: 3px solid black;
-  border-radius: 5px;
-  margin: 10px;
-}
-
-.juego-nivel-dificil .dr .letra {
-  font-family: "Pacifico", cursive;
-  color: black;
-  -webkit-text-stroke: 1px white;
-  text-align: center;
-  font-style: italic;
+.crono,
+.valor-stat {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: #ffffff;
 }
 
 .crono {
-  position: relative;
+    color: #f6e58d;
 }
 
-.finjuego {
-  height: 200px;
+.controles {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
 }
 
-@-webkit-keyframes topBubbles {
-  0% {
-    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
-  }
-  50% {
-    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
-  }
-  100% {
-    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
-    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-  }
+.btn-accion {
+    width: 100%;
+    font-size: 1.15rem;
+    padding: 0.8rem;
 }
 
-@keyframes topBubbles {
-  0% {
-    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
-  }
-  50% {
-    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
-  }
-  100% {
-    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
-    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-  }
+.btn-accion.reset {
+    background-color: #3742fa;
+    box-shadow: 0 4px 15px rgba(55, 66, 250, 0.4);
 }
 
-@-webkit-keyframes bottomBubbles {
-  0% {
-    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
-  }
-  50% {
-    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
-  }
-  100% {
-    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
-    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-  }
+.btn-accion.reset:hover {
+    box-shadow: 0 6px 20px rgba(55, 66, 250, 0.6);
 }
 
-@keyframes bottomBubbles {
-  0% {
-    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
-  }
-  50% {
-    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
-  }
-  100% {
-    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
-    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-  }
+/* Tablero de Cartas */
+.area-tablero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.juego {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-tablero {
+    display: grid;
+    gap: 14px;
+    width: 100%;
+    user-select: none;
+}
+
+.grid-facil {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 720px;
+}
+
+.grid-dificil {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 860px;
+}
+
+/* ==========================================================================
+   Tarjetas 3D Flip
+   ========================================================================== */
+
+.carta {
+    aspect-ratio: 1 / 1;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.carta-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+
+.carta:hover .carta-inner {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.45);
+}
+
+.carta.volteada .carta-inner,
+.carta.acertada .carta-inner {
+    transform: rotateY(180deg);
+}
+
+.carta-front,
+.carta-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Frente (oculto / dorso de la carta) */
+.carta-front {
+    background: linear-gradient(135deg, #2c3e50, #1a252f);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Reverso (carta descubierta) */
+.carta-back {
+    background: #0984e3;
+    color: #ffffff;
+    transform: rotateY(180deg);
+    border: 2px solid #ffffff;
+}
+
+.carta-texto {
+    font-family: var(--font-cards);
+    font-size: clamp(1.1rem, 2.8vw, 1.9rem);
+    font-weight: bold;
+    text-align: center;
+    word-break: break-word;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Estado de Acierto */
+.carta.acertada .carta-inner {
+    animation: acertado-pop 0.5s ease;
+}
+
+.carta.acertada .carta-back {
+    border: 3px solid #2ed573;
+    box-shadow: 0 0 16px rgba(46, 213, 115, 0.8);
+    cursor: default;
+}
+
+@keyframes acertado-pop {
+    0% { transform: rotateY(180deg) scale(1); }
+    50% { transform: rotateY(180deg) scale(1.08); }
+    100% { transform: rotateY(180deg) scale(1); }
+}
+
+/* Estado de Error */
+.carta.error .carta-inner {
+    animation: error-shake 0.45s ease;
+}
+
+.carta.error .carta-back {
+    border: 3px solid var(--error);
+    box-shadow: 0 0 16px rgba(255, 71, 87, 0.8);
+}
+
+@keyframes error-shake {
+    0%, 100% { transform: rotateY(180deg) translateX(0); }
+    20%, 60% { transform: rotateY(180deg) translateX(-8px); }
+    40%, 80% { transform: rotateY(180deg) translateX(8px); }
+}
+
+/* ==========================================================================
+   Modal de Victoria
+   ========================================================================== */
+
+.modal-victoria {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 100;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-contenido {
+    background: rgba(255, 255, 255, 0.95);
+    color: #2d3436;
+    border-radius: 20px;
+    padding: 35px 30px;
+    text-align: center;
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    animation: scaleUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.icono-trofeo {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    animation: bounce 1s infinite alternate ease-in-out;
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-8px); }
+}
+
+.modal-contenido h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--primary);
+    margin-bottom: 6px;
+}
+
+.subtitulo-victoria {
+    font-size: 1.1rem;
+    color: #636e72;
+    margin-bottom: 24px;
+}
+
+.resumen-partida {
+    display: flex;
+    justify-content: space-around;
+    background: #f1f2f6;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 26px;
+}
+
+.item-resumen span {
+    display: block;
+    font-size: 0.9rem;
+    color: #747d8c;
+    margin-bottom: 4px;
+}
+
+.item-resumen strong {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    color: #2f3542;
+}
+
+.modal-acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-acciones a {
+    text-decoration: none;
+    width: 100%;
+}
+
+.btn-modal {
+    width: 100%;
+    font-size: 1.15rem;
+    padding: 0.85rem;
+}
+
+.btn-modal.btn-siguiente {
+    background-color: #2ed573;
+    box-shadow: 0 4px 15px rgba(46, 213, 115, 0.4);
+}
+
+.btn-modal.btn-menu {
+    background-color: #747d8c;
+    box-shadow: 0 4px 15px rgba(116, 125, 140, 0.4);
 }
 
 .hide {
-  display: none;
+    display: none !important;
 }
 
-.none {
-  cursor: default;
-  background-color: gray;
+/* ==========================================================================
+   Diseño Responsive (Tablets y Móviles)
+   ========================================================================== */
+
+@media (max-width: 900px) {
+    .contenedor-juego {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 14px;
+    }
+
+    .panel-lateral {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px;
+        gap: 14px;
+    }
+
+    .caja-perfil {
+        padding-bottom: 0;
+        border-bottom: none;
+        width: 100%;
+    }
+
+    .stats-grid {
+        flex-direction: row;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .caja-stat {
+        flex: 1;
+        flex-direction: column;
+        padding: 8px 10px;
+        text-align: center;
+        gap: 4px;
+    }
+
+    .controles {
+        flex-direction: row;
+        width: 100%;
+        margin-top: 0;
+        gap: 10px;
+    }
+
+    .btn-accion {
+        flex: 1;
+    }
 }
 
-.none i {
-  display: none;
-}
+@media (max-width: 600px) {
+    .botones-top {
+        gap: 8px;
+        padding: 12px 8px;
+    }
 
-@media (max-width: 1024px) {
-  h3 {
-    padding: 0;
-  }
-  .game {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0;
-    width: 100%;
-  }
-  .instrucciones {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0;
-    width: 100%;
-  }
-  .nivel-facil {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0;
-    width: 100%;
-  }
-  .nivel-dificil {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0;
-    width: 75%;
-    background-image: url(img/BRAIN3.jpg);
-    height: 100vh;
-  }
-}
+    .botones-top .bubbly-button {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.9rem;
+    }
 
-@media screen and (max-width: 1440px) {
-  .game {
-    -webkit-transform: scale(0.8);
-    -webkit-transform-origin: 50% 0%;
-    transform: scale(0.8);
-    transform-origin: 50% 0%;
-    height: 125vh;
-    margin-left: 0;
-    margin-right: 0;
-    width: 100%;
-  }
-  body {
-    height: 50vh;
-  }
-  .juego-nivel-facil {
-    height: 75vh;
-  }
-  .juego-nivel-facil .iz {
-    margin-left: 60px;
-    margin-right: 30px;
-    margin-top: 50px;
-    height: 60vh;
-  }
-  .juego-nivel-facil .dr {
-    width: 90%;
-    height: 60vh;
-    margin-bottom: 0;
-  }
-  .juego-nivel-facil .dr td {
-    margin: 10px;
-  }
-  .juego-nivel-dificil {
-    height: 75vh;
-  }
-  .juego-nivel-dificil .iz {
-    margin-left: 60px;
-    margin-right: 30px;
-    margin-top: 50px;
-    height: 60vh;
-  }
-  .juego-nivel-dificil .dr {
-    width: 90%;
-    height: 60vh;
-    margin-bottom: 0;
-  }
-  .juego-nivel-dificil .dr td {
-    margin: 10px;
-    font-size: 190%;
-  }
-  h2 {
-    position: absolute;
-    font-size: 25px;
-    z-index: 1;
-  }
-  .btns {
-    margin-top: 5vh;
-    height: 45px;
-  }
-  .centro {
-    display: block;
-    height: 35vh;
-  }
-  .centro button {
-    margin-top: 10px;
-  }
-  .div-instru {
-    padding: 2%;
-    height: 60%;
-    text-overflow: ellipsis;
-  }
-  .div-instru div {
-    width: 100%;
-    height: 100%;
-  }
-  .div-instru p {
-    font-size: 65%;
-    padding-top: 0;
-  }
-  .instru {
-    font-size: 3em;
-  }
-  .buttons-instru .regresar {
-    margin-right: 15%;
-  }
-  .next {
-    margin-top: 5vh;
-    margin-bottom: 0;
-  }
+    .logo-titulo {
+        font-size: 2.8rem;
+        margin-bottom: 20px;
+    }
+
+    .form {
+        padding: 20px 16px;
+    }
+
+    .nivel {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.1rem;
+    }
+
+    .div-instru {
+        padding: 20px 16px;
+        font-size: 1.05rem;
+    }
+
+    .barra-superior {
+        padding: 12px 14px;
+    }
+
+    .titulo-nivel h2 {
+        font-size: 1.3rem;
+    }
+
+    .btn-volver-inicio {
+        font-size: 0.95rem;
+        padding: 5px 10px;
+    }
+
+    .grid-tablero {
+        gap: 8px;
+    }
+
+    /* En pantallas muy angostas, ajustar columnas para que las tarjetas no se aplasten */
+    .grid-facil {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-dificil {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .carta-front {
+        border-radius: 8px;
+    }
+
+    .carta-back {
+        border-radius: 8px;
+    }
 }
-/*# sourceMappingURL=styles.css.map */

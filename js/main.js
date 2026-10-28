@@ -1,219 +1,236 @@
-var inicio = 0;
-var timeout = 0;
+// Lógica del juego - Nivel Fácil (Multiplicaciones)
 
-function empezarDetener(elemento) {
-    if (timeout == 0) {
-        // empezar el cronometro
+var inicioTiempo = 0;
+var timerId = null;
+var tiempoTranscurrido = "00:00:00";
 
-        /* elemento.value="Detener";
- */
-        // Obtenemos el valor actual
-        inicio = vuelta = new Date().getTime();
+var cartasData = [
+    { text: '2 x 2', parejaId: 1 },
+    { text: '4', parejaId: 1 },
+    { text: '3 x 3', parejaId: 2 },
+    { text: '9', parejaId: 2 },
+    { text: '4 x 4', parejaId: 3 },
+    { text: '16', parejaId: 3 },
+    { text: '5 x 5', parejaId: 4 },
+    { text: '25', parejaId: 4 },
+    { text: '6 x 6', parejaId: 5 },
+    { text: '36', parejaId: 5 },
+    { text: '7 x 7', parejaId: 6 },
+    { text: '49', parejaId: 6 } // Corregido: 7x7 es 49
+];
 
-        // iniciamos el proceso
-        funcionando();
-    } else {
-        // detemer el cronometro
+var juegoIniciado = false;
+var tableroBloqueado = false;
+var primeraCarta = null;
+var segundaCarta = null;
+var intentos = 0;
+var parejasAcertadas = 0;
+var totalParejas = 6;
 
-        /*         elemento.value="Empezar"; */
-        clearTimeout(timeout);
-        timeout = 0;
+// Cronómetro
+function iniciarCronometro() {
+    if (timerId !== null) return;
+    inicioTiempo = new Date().getTime();
+    timerId = setInterval(actualizarCronometro, 1000);
+}
+
+function detenerCronometro() {
+    if (timerId !== null) {
+        clearInterval(timerId);
+        timerId = null;
     }
 }
 
-function funcionando() {
-    // obteneos la fecha actual
+function resetearCronometro() {
+    detenerCronometro();
+    document.getElementById('crono').innerText = "00:00:00";
+    tiempoTranscurrido = "00:00:00";
+}
+
+function actualizarCronometro() {
     var actual = new Date().getTime();
-
-    // obtenemos la diferencia entre la fecha actual y la de inicio
-    var diff = new Date(actual - inicio);
-
-    // mostramos la diferencia entre la fecha actual y la inicial
-    var result = LeadingZero(diff.getUTCHours()) + ":" + LeadingZero(diff.getUTCMinutes()) + ":" + LeadingZero(diff.getUTCSeconds());
-    document.getElementById('crono').innerHTML = result;
-
-    // Indicamos que se ejecute esta función nuevamente dentro de 1 segundo
-    timeout = setTimeout("funcionando()", 1000);
+    var diff = new Date(actual - inicioTiempo);
+    var horas = LeadingZero(diff.getUTCHours());
+    var minutos = LeadingZero(diff.getUTCMinutes());
+    var segundos = LeadingZero(diff.getUTCSeconds());
+    tiempoTranscurrido = horas + ":" + minutos + ":" + segundos;
+    var el = document.getElementById('crono');
+    if (el) el.innerText = tiempoTranscurrido;
 }
 
-/* Funcion que pone un 0 delante de un valor si es necesario */
-function LeadingZero(Time) {
-    return (Time < 10) ? "0" + Time : + Time;
-}
-var animateButton = function (e) {
-
-    e.preventDefault;
-    //reset animation
-    e.target.classList.remove('animate');
-
-    e.target.classList.add('animate');
-    setTimeout(function () {
-        e.target.classList.remove('animate');
-    }, 700);
-};
-
-var bubblyButtons = document.getElementsByClassName("bubbly-button");
-
-for (var i = 0; i < bubblyButtons.length; i++) {
-    bubblyButtons[i].addEventListener('click', animateButton, false);
+function LeadingZero(num) {
+    return (num < 10) ? "0" + num : num;
 }
 
-var cartas = new Array(
-    { text: '2 x 2', nombre: '1', seleccion: false }, { text: '3 x 3', nombre: '2', seleccion: false },
-    { text: '4 x 4', nombre: '3', seleccion: false }, { text: '5 x 5', nombre: '4', seleccion: false },
-    { text: '6 x 6', nombre: '5', seleccion: false }, { text: '7 x 7', nombre: '6', seleccion: false },
-    { text: '4', nombre: '1', seleccion: false }, { text: '9', nombre: '2', seleccion: false },
-    { text: '16', nombre: '3', seleccion: false }, { text: '25', nombre: '4', seleccion: false },
-    { text: '36', nombre: '5', seleccion: false }, { text: '46', nombre: '6', seleccion: false });
+// Inicialización del Tablero
+function renderizarTablero() {
+    var contenedor = document.getElementById("tablero-cartas");
+    if (!contenedor) return;
 
-var intentos = 0;
-var jugada1 = "";
-var jugada2 = "";
-var infojugada1 = "";
-var infojugada2 = "";
-var identificadorJ1 = "";
-var identificadorJ2 = "";
-var aciertos = 0;
+    contenedor.innerHTML = "";
+    
+    // Barajar cartas con el algoritmo Fisher-Yates
+    var barajadas = cartasData.slice();
+    for (var i = barajadas.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = barajadas[i];
+        barajadas[i] = barajadas[j];
+        barajadas[j] = temp;
+    }
+
+    barajadas.forEach(function(carta, index) {
+        var cardEl = document.createElement("div");
+        cardEl.className = "carta";
+        cardEl.dataset.id = index;
+        cardEl.dataset.pareja = carta.parejaId;
+        cardEl.dataset.valor = carta.text;
+
+        cardEl.innerHTML = `
+            <div class="carta-inner">
+                <div class="carta-front">
+                    <i class="fas fa-question"></i>
+                </div>
+                <div class="carta-back">
+                    <span class="carta-texto">${carta.text}</span>
+                </div>
+            </div>
+        `;
+
+        cardEl.addEventListener("click", function() {
+            seleccionarCarta(cardEl);
+        });
+
+        contenedor.appendChild(cardEl);
+    });
+}
 
 function iniciarJuego() {
-    var dato = document.getElementById("juego");
-    var btniniciar = document.getElementById("btn-iniciar");
-    dato.style.opacity = 1;
+    var btnIniciar = document.getElementById("btn-iniciar");
+    var juegoEl = document.getElementById("juego");
+    if (juegoEl) juegoEl.classList.remove("deshabilitado");
 
-    cartas.sort(function () { return Math.random() - 0.5 });
-    for (var i = 0; i < 12; i++) {
-        var carta = cartas[i];
-        var dato = document.getElementById(i.toString());
-        dato.dataset.valor = carta.text;
-        dato.dataset.nombre = carta.nombre;
-        console.log(dato.dataset.nombre)
+    juegoIniciado = true;
+    tableroBloqueado = false;
+    iniciarCronometro();
+
+    if (btnIniciar) {
+        btnIniciar.classList.add("disabled");
+        btnIniciar.disabled = true;
     }
-    btniniciar.className = "bubbly-button iniciar none";
-    btniniciar.disabled = true;
-
-    console.log("aciertos " + aciertos)
-};
+}
 
 function resetearJuego() {
-    document.getElementById("juego").className="juego";
-    document.getElementById("juego").innerHTML = `
-    <table>
-        <tr>
-        <td id="0" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-        <td id="1" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-        <td id="2" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-    </tr>
-    <tr>
-        <td id="3" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-        <td id="4" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-        <td id="5" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-    </tr>
-    <tr>
-        <td id="6" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-        <td id="7" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-        <td id="8" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-    </tr>
-    <tr>
-        <td id="9" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-        <td id="10" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-        <td id="11" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-    </tr>
-</table > `;
-    vaciar();
-    var dato = document.getElementById("juego");
-    dato.style.opacity = 1;
-    aciertos = 0;
-    cartas.sort(function () { return Math.random() - 0.5 });
-    for (var i = 0; i < 12; i++) {
-        var carta = cartas[i];
-        cartas[i].seleccion = false;
-        var dato = document.getElementById(i.toString());
-        dato.dataset.valor = carta.text;
-        dato.dataset.nombre = carta.nombre;
+    detenerCronometro();
+    resetearCronometro();
 
-        colorCambio(i, 'black', '');
+    primeraCarta = null;
+    segundaCarta = null;
+    tableroBloqueado = false;
+    juegoIniciado = false;
+    intentos = 0;
+    parejasAcertadas = 0;
 
-        console.log(dato.dataset.nombre);
+    actualizarEstadisticas();
+    renderizarTablero();
 
-    }
-    console.log("aciertos " + aciertos)
-}
-
-function girarCarta() {
-    var evento = window.event;
-
-    jugada2 = evento.target.dataset.valor;
-    infojugada2 = evento.target.dataset.nombre;
-    identificadorJ2 = evento.target.id;
-
-
-
-    if (jugada1 !== "") {
-
-        if (infojugada1 === infojugada2 && identificadorJ1 !== identificadorJ2 && cartas[parseInt(identificadorJ2)].seleccion != true && cartas[parseInt(identificadorJ1)].seleccion != true) {
-
-            cartas[parseInt(identificadorJ1)].seleccion = true;
-            cartas[parseInt(identificadorJ2)].seleccion = true;
-
-            colorCambio(identificadorJ2, "blue", jugada2);
-            vaciar();
-            comprobar();
-        } else if (identificadorJ1 !== identificadorJ2) {
-            var self = this;
-            setTimeout(function () {
-                colorCambio(self.identificadorJ1, "black", "")
-                colorCambio(self.identificadorJ2, "black", "")
-                vaciar()
-            }, 200);
-
-            colorCambio(identificadorJ2, "blue", jugada2);
-        }
-    } else if (jugada2 !== "valor") {
-
-        colorCambio(identificadorJ2, "blue", jugada2);
-
-        jugada1 = jugada2;
-        infojugada1 = infojugada2;
-        identificadorJ1 = identificadorJ2;
-    }
-};
-
-function vaciar() {
-    jugada1 = "";
-    jugada2 = "";
-
-    infojugada1 = "";
-    infojugada2 = "";
-
-    identificadorJ1 = "";
-    identificadorJ2 = "";
-}
-
-function colorCambio(posicion, color, contenido) {
-    document.getElementById(posicion.toString()).style.backgroundColor = color;
-    document.getElementById(posicion.toString()).innerHTML = contenido;
-}
-
-function comprobar() {
-    aciertos = 0;
-    for (var i = 0; i < 12; i++) {
-        if (cartas[i].seleccion == true) {
-            aciertos++;
-        }
-
+    var btnIniciar = document.getElementById("btn-iniciar");
+    if (btnIniciar) {
+        btnIniciar.classList.remove("disabled");
+        btnIniciar.disabled = false;
     }
 
-    if (aciertos == 12) {
-        document.getElementById("juego").innerHTML = `<div class="fin-contend">
-        <div class="fin">
-            <h3>Felicidades <br> GANASTE</h3>
-            <a href="niveldificil.html"><button
-                    class="bubbly-button next">Siguiente Nivel <i
-                        class="fas fa-arrow-right"></i></button></a>
-        </div>`;
-        document.getElementById("juego").className="juego finjuego";
-        empezarDetener();
+    // Auto-iniciar para agilizar la jugabilidad
+    iniciarJuego();
+}
+
+function actualizarEstadisticas() {
+    var intentosEl = document.getElementById("contador-movimientos");
+    var parejasEl = document.getElementById("contador-parejas");
+    if (intentosEl) intentosEl.innerText = intentos;
+    if (parejasEl) parejasEl.innerText = parejasAcertadas + " / " + totalParejas;
+}
+
+function seleccionarCarta(cardEl) {
+    // Si el tablero está bloqueado, ya está volteada o emparejada, no hacer nada
+    if (tableroBloqueado) return;
+    if (cardEl.classList.contains("volteada") || cardEl.classList.contains("acertada")) return;
+
+    // Si aún no se dio a iniciar, iniciar automáticamente al primer clic
+    if (!juegoIniciado) {
+        iniciarJuego();
+    }
+
+    cardEl.classList.add("volteada");
+
+    if (!primeraCarta) {
+        primeraCarta = cardEl;
+    } else {
+        segundaCarta = cardEl;
+        intentos++;
+        actualizarEstadisticas();
+        verificarPareja();
     }
 }
 
+function verificarPareja() {
+    tableroBloqueado = true;
+    var esPareja = primeraCarta.dataset.pareja === segundaCarta.dataset.pareja;
 
+    if (esPareja) {
+        setTimeout(function() {
+            primeraCarta.classList.add("acertada");
+            segundaCarta.classList.add("acertada");
+            parejasAcertadas++;
+            actualizarEstadisticas();
+            resetearSeleccion();
+
+            if (parejasAcertadas === totalParejas) {
+                finalizarPartida();
+            }
+        }, 350);
+    } else {
+        setTimeout(function() {
+            primeraCarta.classList.add("error");
+            segundaCarta.classList.add("error");
+        }, 200);
+
+        setTimeout(function() {
+            primeraCarta.classList.remove("volteada", "error");
+            segundaCarta.classList.remove("volteada", "error");
+            resetearSeleccion();
+        }, 900);
+    }
+}
+
+function resetearSeleccion() {
+    primeraCarta = null;
+    segundaCarta = null;
+    tableroBloqueado = false;
+}
+
+function finalizarPartida() {
+    detenerCronometro();
+
+    var nick = sessionStorage.getItem('nick') || "Jugador";
+    var victoriaNick = document.getElementById("victoria-nick");
+    var victoriaTiempo = document.getElementById("victoria-tiempo");
+    var victoriaIntentos = document.getElementById("victoria-intentos");
+    var modal = document.getElementById("modal-victoria");
+
+    if (victoriaNick) victoriaNick.innerText = nick;
+    if (victoriaTiempo) victoriaTiempo.innerText = tiempoTranscurrido;
+    if (victoriaIntentos) victoriaIntentos.innerText = intentos;
+
+    setTimeout(function() {
+        if (modal) modal.classList.remove("hide");
+    }, 500);
+}
+
+function cerrarModal() {
+    var modal = document.getElementById("modal-victoria");
+    if (modal) modal.classList.add("hide");
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    renderizarTablero();
+});

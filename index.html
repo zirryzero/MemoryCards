@@ -1,53 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Card</title>
+    <title>MemoryCards - Juego de Memoria</title>
     <script src="https://kit.fontawesome.com/14ac42b08d.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css" />
 </head>
 
 <body>
     <div class="game">
-        <div class="botones">
-            
-            <a href="https://github.com/login?return_to=%2Fzirryzero%2FMemoryCards" target="_blank"><button class="bubbly-button compartir"><i class="fas fa-share-alt"></i> Compartir</button></a>
-            <a href="https://github.com/zirryzero" target="_blank"><button class="bubbly-button seguir"><i class="fas fa-heart"></i> Seguir</button></a>
-            <a href="https://github.com/login?return_to=%2Fzirryzero%2FMemoryCards" target="_blank"><button class="bubbly-button megusta"><i class="far fa-thumbs-up"></i> Me gusta</button></a>
-        </div>
-        <h3>MemoryCards</h3>
+        <header class="botones botones-top">
+            <button class="bubbly-button compartir" onclick="compartirJuego()">
+                <i class="fas fa-share-alt"></i> Compartir
+            </button>
+            <a href="https://github.com/zirryzero" target="_blank" rel="noopener noreferrer">
+                <button class="bubbly-button seguir">
+                    <i class="fas fa-heart"></i> Seguir
+                </button>
+            </a>
+            <a href="https://github.com/zirryzero/MemoryCards" target="_blank" rel="noopener noreferrer">
+                <button class="bubbly-button megusta">
+                    <i class="far fa-star"></i> GitHub
+                </button>
+            </a>
+        </header>
 
-        <form method="get" class="form">
-            <div class="nivel">
-                <label class="container">Nivel Bajo
-                    <input id="r1" type="radio" name="radio">
-                    <span class="checkmark"></span>
-                </label>
-                <label  class="container">Nivel Alto
-                    <input id="r2" type="radio" name="radio">
-                    <span class="checkmark"></span>
-                </label>
-            </div>
-            <div>
-                <span style="font-size: 48px; color: black;">
+        <main class="menu-principal">
+            <h1 class="logo-titulo">MemoryCards</h1>
+
+            <form class="form" onsubmit="event.preventDefault(); iniciar();">
+                <div class="nivel">
+                    <label class="container">Nivel Bajo (Fácil)
+                        <input id="r1" type="radio" name="radio" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Nivel Alto (Difícil)
+                        <input id="r2" type="radio" name="radio">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                
+                <div class="input-nick-wrapper">
                     <i class="n far fa-user"></i>
-                </span>
-                <input id="nickName" class="nick" type="text" name="nombre" size="40" placeholder="NickName" autocomplete="off">
-            </div>
-        </form>
-        <div class="botones">
-            <button class="bubbly-button jugar" onclick="iniciar()"><i class="fas fa-play-circle"></i> Jugar</button>
-        </div>
+                    <input id="nickName" class="nick" type="text" name="nombre" placeholder="Introduce tu NickName" autocomplete="off" maxlength="15">
+                </div>
+
+                <div class="botones-jugar">
+                    <button type="submit" class="bubbly-button jugar">
+                        <i class="fas fa-play-circle"></i> Jugar
+                    </button>
+                </div>
+            </form>
+        </main>
+
         <footer>
-            <div><p><a href="instrucciones.html">Instrucciones</a> - <a href="https://github.com/zirryzero"  target="_blank">Contacto</a></p> </div>
+            <p>
+                <a href="instrucciones.html"><i class="fas fa-book-open"></i> Instrucciones</a> &bull; 
+                <a href="https://github.com/zirryzero" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Contacto</a>
+            </p>
         </footer>
     </div>
 
-    <script src="js/main.js"></script> 
-    <script src="js/iniciar.js"></script> 
+    <script src="js/iniciar.js"></script>
 </body>
 
 </html>

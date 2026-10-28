@@ -1,77 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MemoryCard Nivel Facil</title>
+    <title>MemoryCards - Nivel Fácil</title>
     <script src="https://kit.fontawesome.com/14ac42b08d.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css" />
 </head>
 
 <body onload="onLoad()">
-    <div class="nivel-facil">
-        <div class="titulo">
-            <h2>MemoryCards</h2>
-            <br>
-            <h2>Nivel Facil</h2>
-        </div>
-        <div class="juego-nivel-facil">
-            <div class="iz">
-                <span style="font-size: 48px; color: black;">
-                    <i class="n far fa-user"></i>
-                </span>
-                <div class="info-nick">
+    <div class="pantalla-juego nivel-facil">
+        <header class="barra-superior">
+            <div class="titulo-nivel">
+                <h2>MemoryCards</h2>
+                <span class="badge-dificultad facil">Nivel Fácil</span>
+            </div>
+            <a href="index.html" class="btn-volver-inicio" title="Volver al Menú Principal">
+                <i class="fas fa-home"></i> Inicio
+            </a>
+        </header>
 
-                    <div id="caja-nick" class="caja">NickName</div>
+        <div class="contenedor-juego">
+            <!-- Panel de Estadísticas y Controles -->
+            <aside class="panel-lateral">
+                <div class="caja-perfil">
+                    <span class="icono-usuario">
+                        <i class="far fa-user"></i>
+                    </span>
+                    <div id="caja-nick" class="caja-nick">Jugador</div>
                 </div>
-                <div class="caja contador">
-                    <div class="crono_wrapper">
-                        <h2 class="crono" id='crono'>00:00:00</h2>
+
+                <div class="stats-grid">
+                    <div class="caja-stat">
+                        <span class="label-stat"><i class="fas fa-stopwatch"></i> Tiempo</span>
+                        <h3 class="crono" id="crono">00:00:00</h3>
+                    </div>
+                    <div class="caja-stat">
+                        <span class="label-stat"><i class="fas fa-shoe-prints"></i> Intentos</span>
+                        <h3 class="valor-stat" id="contador-movimientos">0</h3>
+                    </div>
+                    <div class="caja-stat">
+                        <span class="label-stat"><i class="fas fa-check-circle"></i> Parejas</span>
+                        <h3 class="valor-stat" id="contador-parejas">0 / 6</h3>
                     </div>
                 </div>
-                <div class="centro">
-                    <button id="btn-iniciar" class="bubbly-button iniciar btns"
-                        onclick="iniciarJuego(), empezarDetener(this);"><i class="fas fa-gamepad"></i>
-                        Iniciar</button>
-                    <button class="bubbly-button reset btns"
-                        onclick="resetearJuego(), empezarDetener(this), empezarDetener(this);"><i
-                            class="fas fa-undo-alt"></i>
-                        Reset</button>
+
+                <div class="controles">
+                    <button id="btn-iniciar" class="bubbly-button btn-accion iniciar" onclick="iniciarJuego()">
+                        <i class="fas fa-play"></i> Iniciar
+                    </button>
+                    <button id="btn-reset" class="bubbly-button btn-accion reset" onclick="resetearJuego()">
+                        <i class="fas fa-undo-alt"></i> Reiniciar
+                    </button>
                 </div>
-            </div>
-            <div class="dr">
+            </aside>
+
+            <!-- Tablero de Cartas -->
+            <main class="area-tablero">
                 <div class="juego" id="juego">
-                    <table>
-                        <tr>
-                            <td id="0" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-                            <td id="1" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-                            <td id="2" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-                        </tr>
-                        <tr>
-                            <td id="3" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-                            <td id="4" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-                            <td id="5" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-                        </tr>
-                        <tr>
-                            <td id="6" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-                            <td id="7" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-                            <td id="8" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-                        </tr>
-                        <tr>
-                            <td id="9" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-                            <td id="10" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-                            <td id="11" class="letra" onclick="girarCarta()" data-valor="valor"></td>
-                        </tr>
-                    </table> 
+                    <div class="grid-tablero grid-facil" id="tablero-cartas">
+                        <!-- Generado dinámicamente o estructurado -->
                     </div>
                 </div>
+            </main>
+        </div>
 
+        <!-- Modal de Victoria -->
+        <div id="modal-victoria" class="modal-victoria hide">
+            <div class="modal-contenido">
+                <div class="icono-trofeo">🏆</div>
+                <h2>¡Felicidades, <span id="victoria-nick">Jugador</span>!</h2>
+                <p class="subtitulo-victoria">Has completado el Nivel Fácil</p>
+                <div class="resumen-partida">
+                    <div class="item-resumen">
+                        <span>Tiempo:</span>
+                        <strong id="victoria-tiempo">00:00:00</strong>
+                    </div>
+                    <div class="item-resumen">
+                        <span>Intentos:</span>
+                        <strong id="victoria-intentos">0</strong>
+                    </div>
+                </div>
+                <div class="modal-acciones">
+                    <button class="bubbly-button btn-modal" onclick="resetearJuego(); cerrarModal();">
+                        <i class="fas fa-redo"></i> Jugar de Nuevo
+                    </button>
+                    <a href="niveldificil.html">
+                        <button class="bubbly-button btn-modal btn-siguiente">
+                            Siguiente Nivel <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </a>
+                    <a href="index.html">
+                        <button class="bubbly-button btn-modal btn-menu">
+                            <i class="fas fa-home"></i> Menú Principal
+                        </button>
+                    </a>
+                </div>
             </div>
-
         </div>
     </div>
+
     <script src="js/main.js"></script>
     <script src="js/iniciar.js"></script>
 </body>
