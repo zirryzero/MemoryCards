@@ -12,22 +12,29 @@
 
 <body>
     <div class="instrucciones">
-        <h1 class="logo-titulo instru">Instrucciones</h1>
+        <header class="botones-top">
+            <button id="btn-lang-toggle" class="bubbly-button btn-lang" onclick="alternarIdioma()" title="Switch to English">
+                🌐 EN
+            </button>
+        </header>
+
+        <h1 class="logo-titulo instru" data-i18n="instru_titulo">Instrucciones</h1>
         <div class="div-instru">
-            <p><i class="fas fa-eye"></i> <strong>1.</strong> Al iniciar el juego, pulsa el botón <em>Iniciar</em> para comenzar la partida y el cronómetro.</p>
-            <p><i class="fas fa-hand-pointer"></i> <strong>2.</strong> Haz clic en dos tarjetas para voltearlas y buscar la pareja correcta.</p>
-            <p><i class="fas fa-check-double"></i> <strong>3.</strong> En el nivel fácil busca el cálculo matemático y su resultado. En el nivel difícil busca los colores en inglés y español.</p>
-            <p><i class="fas fa-stopwatch"></i> <strong>4.</strong> ¡Completa todas las parejas en el menor tiempo y con la menor cantidad de intentos posibles!</p>
-            <p class="suerte-text">⭐ ¡Mucha suerte y diviértete! ⭐</p>
+            <p data-i18n="instru_p1"><i class="fas fa-eye"></i> <strong>1.</strong> Al iniciar el juego, pulsa el botón <em>Iniciar</em> para comenzar la partida y el cronómetro.</p>
+            <p data-i18n="instru_p2"><i class="fas fa-hand-pointer"></i> <strong>2.</strong> Haz clic en dos tarjetas para voltearlas y buscar la pareja correcta.</p>
+            <p data-i18n="instru_p3"><i class="fas fa-check-double"></i> <strong>3.</strong> En el nivel fácil busca el cálculo matemático y su resultado. En el nivel difícil busca los colores en inglés y español.</p>
+            <p data-i18n="instru_p4"><i class="fas fa-stopwatch"></i> <strong>4.</strong> ¡Completa todas las parejas en el menor tiempo y con la menor cantidad de intentos posibles!</p>
+            <p class="suerte-text" data-i18n="instru_suerte">⭐ ¡Mucha suerte y diviértete! ⭐</p>
         </div>
         <div class="buttons-instru">
             <a href="index.html">
-                <button class="bubbly-button regresar">
+                <button class="bubbly-button regresar" data-i18n="btn_volver_menu">
                     <i class="fas fa-arrow-left"></i> Volver al Menú
                 </button>
             </a>
         </div>
     </div>
+    <script src="js/i18n.js"></script>
     <script src="js/iniciar.js"></script>
 </body>
 

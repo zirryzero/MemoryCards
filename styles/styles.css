@@ -395,6 +395,25 @@ footer a:hover {
     transition: background 0.2s ease;
 }
 
+.controles-cabecera {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-lang {
+    background-color: #0984e3;
+    font-size: 0.95rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(9, 132, 227, 0.4);
+}
+
+.btn-lang:hover {
+    background-color: #74b9ff;
+    box-shadow: 0 6px 16px rgba(9, 132, 227, 0.6);
+}
+
 .btn-volver-inicio:hover {
     background: rgba(255, 255, 255, 0.3);
 }

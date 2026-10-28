@@ -216,7 +216,9 @@ function resetearSeleccion() {
 function finalizarPartida() {
     detenerCronometro();
 
-    var nick = sessionStorage.getItem('nick') || "Jugador";
+    var lang = (typeof obtenerIdiomaActual === 'function') ? obtenerIdiomaActual() : 'es';
+    var defaultNick = (lang === 'en') ? "Player" : "Jugador";
+    var nick = sessionStorage.getItem('nick') || defaultNick;
     var victoriaNick = document.getElementById("victoria-nick");
     var victoriaTiempo = document.getElementById("victoria-tiempo");
     var victoriaIntentos = document.getElementById("victoria-intentos");
@@ -225,6 +227,10 @@ function finalizarPartida() {
     if (victoriaNick) victoriaNick.innerText = nick;
     if (victoriaTiempo) victoriaTiempo.innerText = tiempoTranscurrido;
     if (victoriaIntentos) victoriaIntentos.innerText = intentos;
+
+    if (typeof aplicarIdioma === 'function') {
+        aplicarIdioma(lang);
+    }
 
     setTimeout(function() {
         if (modal) modal.classList.remove("hide");

@@ -13,16 +13,19 @@
 <body>
     <div class="game">
         <header class="botones botones-top">
-            <button class="bubbly-button compartir" onclick="compartirJuego()">
+            <button id="btn-lang-toggle" class="bubbly-button btn-lang" onclick="alternarIdioma()" title="Switch to English">
+                🌐 EN
+            </button>
+            <button class="bubbly-button compartir" onclick="compartirJuego()" data-i18n="btn_compartir">
                 <i class="fas fa-share-alt"></i> Compartir
             </button>
             <a href="https://github.com/zirryzero" target="_blank" rel="noopener noreferrer">
-                <button class="bubbly-button seguir">
+                <button class="bubbly-button seguir" data-i18n="btn_seguir">
                     <i class="fas fa-heart"></i> Seguir
                 </button>
             </a>
             <a href="https://github.com/zirryzero/MemoryCards" target="_blank" rel="noopener noreferrer">
-                <button class="bubbly-button megusta">
+                <button class="bubbly-button megusta" data-i18n="btn_github">
                     <i class="far fa-star"></i> GitHub
                 </button>
             </a>
@@ -33,11 +36,13 @@
 
             <form class="form" onsubmit="event.preventDefault(); iniciar();">
                 <div class="nivel">
-                    <label class="container">Nivel Bajo (Fácil)
+                    <label class="container">
+                        <span data-i18n="nivel_bajo">Nivel Bajo (Fácil)</span>
                         <input id="r1" type="radio" name="radio" checked>
                         <span class="checkmark"></span>
                     </label>
-                    <label class="container">Nivel Alto (Difícil)
+                    <label class="container">
+                        <span data-i18n="nivel_alto">Nivel Alto (Difícil)</span>
                         <input id="r2" type="radio" name="radio">
                         <span class="checkmark"></span>
                     </label>
@@ -45,11 +50,11 @@
                 
                 <div class="input-nick-wrapper">
                     <i class="n far fa-user"></i>
-                    <input id="nickName" class="nick" type="text" name="nombre" placeholder="Introduce tu NickName" autocomplete="off" maxlength="15">
+                    <input id="nickName" class="nick" type="text" name="nombre" placeholder="Introduce tu NickName" data-i18n-placeholder="placeholder_nick" autocomplete="off" maxlength="15">
                 </div>
 
                 <div class="botones-jugar">
-                    <button type="submit" class="bubbly-button jugar">
+                    <button type="submit" class="bubbly-button jugar" data-i18n="btn_jugar">
                         <i class="fas fa-play-circle"></i> Jugar
                     </button>
                 </div>
@@ -58,12 +63,13 @@
 
         <footer>
             <p>
-                <a href="instrucciones.html"><i class="fas fa-book-open"></i> Instrucciones</a> &bull; 
-                <a href="https://github.com/zirryzero" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Contacto</a>
+                <a href="instrucciones.html"><span data-i18n="btn_instrucciones"><i class="fas fa-book-open"></i> Instrucciones</span></a> &bull; 
+                <a href="https://github.com/zirryzero" target="_blank" rel="noopener noreferrer"><span data-i18n="btn_contacto"><i class="fab fa-github"></i> Contacto</span></a>
             </p>
         </footer>
     </div>
 
+    <script src="js/i18n.js"></script>
     <script src="js/iniciar.js"></script>
 </body>
 

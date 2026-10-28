@@ -2,6 +2,8 @@
 
 > Un clásico juego interactivo de memoria y emparejamiento de cartas desarrollado con HTML5, CSS3/SCSS y JavaScript vainilla.
 
+🌐 **Idiomas / Languages:** [Español](README.md) 🇪🇸 | [English](README_EN.md) 🇺🇸 🇬🇧
+
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)

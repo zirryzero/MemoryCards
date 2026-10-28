@@ -5,9 +5,11 @@ function iniciar() {
     var name = inputNick ? inputNick.value.trim() : "";
     var r1 = document.getElementById('r1');
     var r2 = document.getElementById('r2');
+    var lang = (typeof obtenerIdiomaActual === 'function') ? obtenerIdiomaActual() : 'es';
+    var defaultNick = (lang === 'en') ? "Player" : "Jugador";
     
     if (name === "") {
-        name = "Jugador";
+        name = defaultNick;
     }
 
     sessionStorage.setItem('nick', name);
@@ -15,7 +17,6 @@ function iniciar() {
     if (r2 && r2.checked) {
         window.location.href = 'niveldificil.html';
     } else {
-        // Por defecto o si r1 está marcado, va a nivel fácil
         window.location.href = 'nivelfacil.html';
     }
 }
@@ -24,24 +25,38 @@ function onLoad() {
     var cajanick = document.getElementById('caja-nick');
     if (cajanick) {
         var guardado = sessionStorage.getItem('nick');
-        cajanick.innerText = (guardado && guardado.trim() !== "") ? guardado : "Jugador";
+        var lang = (typeof obtenerIdiomaActual === 'function') ? obtenerIdiomaActual() : 'es';
+        var defaultNick = (lang === 'en') ? "Player" : "Jugador";
+        cajanick.innerText = (guardado && guardado.trim() !== "") ? guardado : defaultNick;
     }
 }
 
 // Función para compartir el juego
 function compartirJuego() {
     var url = window.location.origin + window.location.pathname;
+    var lang = (typeof obtenerIdiomaActual === 'function') ? obtenerIdiomaActual() : 'es';
+    var titulo = (lang === 'en') ? 'MemoryCards' : 'MemoryCards';
+    var texto = (lang === 'en') 
+        ? 'Come play this fun MemoryCards game!' 
+        : '¡Ven a jugar este divertido juego de MemoryCards!';
+    var copiadoMsg = (lang === 'en') 
+        ? 'Game link copied to clipboard!' 
+        : '¡Enlace del juego copiado al portapapeles!';
+    var promptMsg = (lang === 'en')
+        ? 'Copy this link to share:'
+        : 'Copia este enlace para compartir:';
+
     if (navigator.share) {
         navigator.share({
-            title: 'MemoryCards',
-            text: '¡Ven a jugar este divertido juego de MemoryCards!',
+            title: titulo,
+            text: texto,
             url: url
         }).catch(function() {});
     } else {
         navigator.clipboard.writeText(url).then(function() {
-            alert('¡Enlace del juego copiado al portapapeles!');
+            alert(copiadoMsg);
         }).catch(function() {
-            prompt('Copia este enlace para compartir:', url);
+            prompt(promptMsg, url);
         });
     }
 }

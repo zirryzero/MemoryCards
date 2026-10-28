@@ -15,11 +15,16 @@
         <header class="barra-superior">
             <div class="titulo-nivel">
                 <h2>MemoryCards</h2>
-                <span class="badge-dificultad facil">Nivel Fácil</span>
+                <span class="badge-dificultad facil" data-i18n="badge_facil">Nivel Fácil</span>
             </div>
-            <a href="index.html" class="btn-volver-inicio" title="Volver al Menú Principal">
-                <i class="fas fa-home"></i> Inicio
-            </a>
+            <div class="controles-cabecera">
+                <button id="btn-lang-toggle" class="bubbly-button btn-lang" onclick="alternarIdioma()" title="Switch to English">
+                    🌐 EN
+                </button>
+                <a href="index.html" class="btn-volver-inicio" title="Volver al Menú Principal" data-i18n="btn_inicio">
+                    <i class="fas fa-home"></i> Inicio
+                </a>
+            </div>
         </header>
 
         <div class="contenedor-juego">
@@ -34,24 +39,24 @@
 
                 <div class="stats-grid">
                     <div class="caja-stat">
-                        <span class="label-stat"><i class="fas fa-stopwatch"></i> Tiempo</span>
+                        <span class="label-stat" data-i18n="stat_tiempo"><i class="fas fa-stopwatch"></i> Tiempo</span>
                         <h3 class="crono" id="crono">00:00:00</h3>
                     </div>
                     <div class="caja-stat">
-                        <span class="label-stat"><i class="fas fa-shoe-prints"></i> Intentos</span>
+                        <span class="label-stat" data-i18n="stat_intentos"><i class="fas fa-shoe-prints"></i> Intentos</span>
                         <h3 class="valor-stat" id="contador-movimientos">0</h3>
                     </div>
                     <div class="caja-stat">
-                        <span class="label-stat"><i class="fas fa-check-circle"></i> Parejas</span>
+                        <span class="label-stat" data-i18n="stat_parejas"><i class="fas fa-check-circle"></i> Parejas</span>
                         <h3 class="valor-stat" id="contador-parejas">0 / 6</h3>
                     </div>
                 </div>
 
                 <div class="controles">
-                    <button id="btn-iniciar" class="bubbly-button btn-accion iniciar" onclick="iniciarJuego()">
+                    <button id="btn-iniciar" class="bubbly-button btn-accion iniciar" onclick="iniciarJuego()" data-i18n="btn_iniciar">
                         <i class="fas fa-play"></i> Iniciar
                     </button>
-                    <button id="btn-reset" class="bubbly-button btn-accion reset" onclick="resetearJuego()">
+                    <button id="btn-reset" class="bubbly-button btn-accion reset" onclick="resetearJuego()" data-i18n="btn_reiniciar">
                         <i class="fas fa-undo-alt"></i> Reiniciar
                     </button>
                 </div>
@@ -61,7 +66,7 @@
             <main class="area-tablero">
                 <div class="juego" id="juego">
                     <div class="grid-tablero grid-facil" id="tablero-cartas">
-                        <!-- Generado dinámicamente o estructurado -->
+                        <!-- Generado dinámicamente -->
                     </div>
                 </div>
             </main>
@@ -71,29 +76,29 @@
         <div id="modal-victoria" class="modal-victoria hide">
             <div class="modal-contenido">
                 <div class="icono-trofeo">🏆</div>
-                <h2>¡Felicidades, <span id="victoria-nick">Jugador</span>!</h2>
-                <p class="subtitulo-victoria">Has completado el Nivel Fácil</p>
+                <h2 data-i18n="victoria_titulo_facil">¡Felicidades, <span id="victoria-nick">Jugador</span>!</h2>
+                <p class="subtitulo-victoria" data-i18n="victoria_sub_facil">Has completado el Nivel Fácil</p>
                 <div class="resumen-partida">
                     <div class="item-resumen">
-                        <span>Tiempo:</span>
+                        <span data-i18n="victoria_tiempo_label">Tiempo:</span>
                         <strong id="victoria-tiempo">00:00:00</strong>
                     </div>
                     <div class="item-resumen">
-                        <span>Intentos:</span>
+                        <span data-i18n="victoria_intentos_label">Intentos:</span>
                         <strong id="victoria-intentos">0</strong>
                     </div>
                 </div>
                 <div class="modal-acciones">
-                    <button class="bubbly-button btn-modal" onclick="resetearJuego(); cerrarModal();">
+                    <button class="bubbly-button btn-modal" onclick="resetearJuego(); cerrarModal();" data-i18n="btn_jugar_nuevo">
                         <i class="fas fa-redo"></i> Jugar de Nuevo
                     </button>
                     <a href="niveldificil.html">
-                        <button class="bubbly-button btn-modal btn-siguiente">
+                        <button class="bubbly-button btn-modal btn-siguiente" data-i18n="btn_siguiente_nivel">
                             Siguiente Nivel <i class="fas fa-arrow-right"></i>
                         </button>
                     </a>
                     <a href="index.html">
-                        <button class="bubbly-button btn-modal btn-menu">
+                        <button class="bubbly-button btn-modal btn-menu" data-i18n="btn_menu_principal">
                             <i class="fas fa-home"></i> Menú Principal
                         </button>
                     </a>
@@ -102,6 +107,7 @@
         </div>
     </div>
 
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
     <script src="js/iniciar.js"></script>
 </body>
