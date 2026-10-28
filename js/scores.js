@@ -181,3 +181,4 @@ function sincronizarScoresConJSON() {
 document.addEventListener('DOMContentLoaded', function() {
     sincronizarScoresConJSON();
 });
+
