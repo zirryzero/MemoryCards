@@ -228,6 +228,11 @@ function finalizarPartida() {
     if (victoriaTiempo) victoriaTiempo.innerText = tiempoTranscurrido;
     if (victoriaIntentos) victoriaIntentos.innerText = intentos;
 
+    // Registrar en tabla de High Scores
+    if (typeof registrarPuntuacion === 'function') {
+        registrarPuntuacion('dificil', nick, tiempoTranscurrido, intentos);
+    }
+
     if (typeof aplicarIdioma === 'function') {
         aplicarIdioma(lang);
     }

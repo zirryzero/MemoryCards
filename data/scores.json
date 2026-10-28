@@ -1,0 +1,16 @@
+{
+  "facil": [
+    { "nick": "Alex", "tiempo": "00:00:22", "segundos": 22, "intentos": 7, "fecha": "2026-10-25" },
+    { "nick": "Sofia", "tiempo": "00:00:28", "segundos": 28, "intentos": 9, "fecha": "2026-10-26" },
+    { "nick": "Harold", "tiempo": "00:00:35", "segundos": 35, "intentos": 11, "fecha": "2026-10-27" },
+    { "nick": "Luna", "tiempo": "00:00:42", "segundos": 42, "intentos": 13, "fecha": "2026-10-27" },
+    { "nick": "Mateo", "tiempo": "00:00:50", "segundos": 50, "intentos": 15, "fecha": "2026-10-27" }
+  ],
+  "dificil": [
+    { "nick": "Harold", "tiempo": "00:01:05", "segundos": 65, "intentos": 18, "fecha": "2026-10-26" },
+    { "nick": "Valeria", "tiempo": "00:01:14", "segundos": 74, "intentos": 22, "fecha": "2026-10-27" },
+    { "nick": "Carlos", "tiempo": "00:01:25", "segundos": 85, "intentos": 25, "fecha": "2026-10-27" },
+    { "nick": "Elena", "tiempo": "00:01:38", "segundos": 98, "intentos": 29, "fecha": "2026-10-27" },
+    { "nick": "David", "tiempo": "00:01:50", "segundos": 110, "intentos": 33, "fecha": "2026-10-27" }
+  ]
+}

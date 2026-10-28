@@ -17,6 +17,14 @@ var traducciones = {
         "btn_siguiente_nivel": 'Siguiente Nivel <i class="fas fa-arrow-right"></i>',
         "btn_nivel_facil": '<i class="fas fa-arrow-left"></i> Nivel Fácil',
         "btn_menu_principal": '<i class="fas fa-home"></i> Menú Principal',
+        "btn_highscores": '<i class="fas fa-trophy"></i> Récords',
+        "btn_cerrar": 'Cerrar',
+        "th_pos": "Pos",
+        "th_jugador": "Jugador",
+        "th_tiempo": "Tiempo",
+        "th_intentos": "Intentos",
+        "th_fecha": "Fecha",
+        "modal_highscores_titulo": "🏆 Tabla de Puntuaciones Altas",
 
         // Menú Principal
         "nivel_bajo": "Nivel Bajo (Fácil)",
@@ -65,6 +73,14 @@ var traducciones = {
         "btn_siguiente_nivel": 'Next Level <i class="fas fa-arrow-right"></i>',
         "btn_nivel_facil": '<i class="fas fa-arrow-left"></i> Easy Level',
         "btn_menu_principal": '<i class="fas fa-home"></i> Main Menu',
+        "btn_highscores": '<i class="fas fa-trophy"></i> High Scores',
+        "btn_cerrar": 'Close',
+        "th_pos": "Rank",
+        "th_jugador": "Player",
+        "th_tiempo": "Time",
+        "th_intentos": "Moves",
+        "th_fecha": "Date",
+        "modal_highscores_titulo": "🏆 High Scores Leaderboard",
 
         // Main Menu
         "nivel_bajo": "Low Level (Easy)",
@@ -152,3 +168,4 @@ function aplicarIdioma(lang) {
 document.addEventListener('DOMContentLoaded', function() {
     aplicarIdioma(obtenerIdiomaActual());
 });
+

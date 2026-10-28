@@ -57,6 +57,9 @@
                     <button type="submit" class="bubbly-button jugar" data-i18n="btn_jugar">
                         <i class="fas fa-play-circle"></i> Jugar
                     </button>
+                    <button type="button" class="bubbly-button btn-score-menu" onclick="abrirModalHighScores()" data-i18n="btn_highscores">
+                        <i class="fas fa-trophy"></i> Récords
+                    </button>
                 </div>
             </form>
         </main>
@@ -67,8 +70,44 @@
                 <a href="https://github.com/zirryzero" target="_blank" rel="noopener noreferrer"><span data-i18n="btn_contacto"><i class="fab fa-github"></i> Contacto</span></a>
             </p>
         </footer>
+
+        <!-- Modal de High Scores -->
+        <div id="modal-highscores" class="modal-victoria hide">
+            <div class="modal-contenido modal-scores-box">
+                <h2 data-i18n="modal_highscores_titulo">🏆 Tabla de Puntuaciones Altas</h2>
+                
+                <div class="tabs-niveles-scores">
+                    <button id="tab-score-facil" class="tab-score activa" onclick="cambiarPestanaPuntuacion('facil')" data-i18n="badge_facil">Nivel Fácil</button>
+                    <button id="tab-score-dificil" class="tab-score" onclick="cambiarPestanaPuntuacion('dificil')" data-i18n="badge_dificil">Nivel Difícil</button>
+                </div>
+
+                <div class="tabla-scores-wrapper">
+                    <table class="tabla-scores">
+                        <thead>
+                            <tr>
+                                <th data-i18n="th_pos">Pos</th>
+                                <th data-i18n="th_jugador">Jugador</th>
+                                <th data-i18n="th_tiempo">Tiempo</th>
+                                <th data-i18n="th_intentos">Intentos</th>
+                                <th data-i18n="th_fecha">Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-scores-body">
+                            <!-- Inyectado por scores.js -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal-acciones" style="margin-top: 15px;">
+                    <button class="bubbly-button btn-modal btn-menu" onclick="cerrarModalHighScores()" data-i18n="btn_cerrar">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <script src="js/scores.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/iniciar.js"></script>
 </body>
